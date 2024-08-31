@@ -26,10 +26,10 @@
             packages = [
               pkgs.live-server
               pkgs.pandoc
-              pkgs.python3.withPackages (python-pkgs: [
+              (pkgs.python3.withPackages (python-pkgs: [
                 python-pkgs.pandocfilters
                 python-pkgs.panflute
-              ])
+              ]))
             ];
           };
         }
