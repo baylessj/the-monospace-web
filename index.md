@@ -1,38 +1,63 @@
 ---
 title: Later Gator! Tabs
 subtitle: Guitar and bass tabs for our discography
-date: 2024-08-26
-version: 0.0.1
+date: 2024-08-31
+version: 0.1.0
 lang: en
 ---
 
-## Breath into the Bargain
+# Whispers
 
-### Bass
+## Bass
 
-**Instrumental**
+Verse
+```jtab-E-A-D-G
+$3 5    4 5 4 0 $4 2    5 5 5 7
+```
+
+Prechorus
+```jtab-E-A-D-G
+$4 2 0  2 0  2 0  2
+```
+
+Chorus
+```jtab-E-A-D-G
+$3 5   0   2
+```
+
+Breakdown
+```jtab-E-A-D-G
+$4 2  0  5  (repeat x3)  $4 2 4 $3 0 $2 2 0 $3 4
+```
+
+
+# Breath into the Bargain
+
+## Bass
+
+Instrumental
 
 ```jtab-E-A-D-G
 $3 9 11 11 11 11 8  $2 8 8 8 8 $3 9    $3 4 4 4 4 6 8  $2 8 8 8 8 $3 9   
 $3 4 4 4 4 6 8  $2 8 8 8 8 $3 9
 ```
 
-**Prechorus 1**
+Prechorus 1
 ```jtab-E-A-D-G
 $3 9 $2 8  $3 11 $2 10  $3 8 $2 10  $3 13 $2 11
 ```
 
-**Chorus**
+Chorus
 ```jtab-E-A-D-G
 $4 9  8   2 
 ```
 
-**Verse**
+Verse
 ```jtab-E-A-D-G
 $3 4 $4 4 4 4 4 4  1 6 6 6 6 6   2 $3 4 4 4 4 4 $4 4   4 $3 6 $2 6 $3 6 $4 4 
 ```
 
-**Prechorus 2**
+Prechorus 2
 ```jtab-E-A-D-G
 $4 2 4 1 6   2 $3 4 $4 1 6   $4 2 4 1 6   2 $3 4 $4 1 1 1  
 ```
