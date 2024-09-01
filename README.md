@@ -1,8 +1,10 @@
-# The Monospace Web
+# Later Gator! Tabs
 
-Monospace fonts are dear to many of us. Some find them more readable, consistent, and beautiful, than their proportional alternatives. Maybe we’re just brainwashed from spending years in terminals? Or are we hopelessly nostalgic? I’m not sure. But I like them, and that’s why I started experimenting with all-monospace Web.
+Guitar and Bass tabs for Later Gator's two songs currently on streaming.
 
-https://owickstrom.github.io/the-monospace-web/
+Built on the Monospace Web project by Oskar Wickström https://owickstrom.github.io/the-monospace-web/
+
+Converts [`jtab`](https://jtab.tardate.com/) codeblocks to unicode plaintext using a rudimentary implementation of a jtab parser as a [Pandoc](https://pandoc.org/) JSON Filter.
 
 ## Build
 
