@@ -8,22 +8,17 @@ def debug(string: str):
 
 def writeColumn(strings: List[str], str_num: int, val: str):
   for idx, _ in enumerate(strings):
-    if idx + 1 == str_num:
+    if idx == str_num:
       strings[idx] += val
     else:
       strings[idx] += "─"
 
-# def startLine(strings: List[str]):
-#   for i in range(1, len(strings) - 1):
-#     strings[i] += "│─"
-#   strings[0] += "╭─"
-#   strings[-1] += "╰─"
-
-def endLine(strings: List[str]):
-  for i in range(1, len(strings) - 1):
-    strings[i] += "─│"
-  strings[0] += "─╮"
-  strings[-1] += "─╯"
+def writeChord(strings: List[str], chord: List[str]):
+  for i in range(len(strings)):
+    if chord[i] == "":
+      strings[i] += "─"
+    else:
+      strings[i] += chord[i]
 
 def formatTuningVal(val: str):
   return val.upper().ljust(2)
@@ -35,6 +30,12 @@ def startLine(tuning: List[str]) -> List[str]:
     strings[i] = formatTuningVal(tuning[i]) + " │─"
   strings[len(tuning) - 1] = formatTuningVal(tuning[-1]) + " ╰─"
   return strings
+
+def endLine(strings: List[str]):
+  for i in range(1, len(strings) - 1):
+    strings[i] += "─│"
+  strings[0] += "─╮"
+  strings[-1] += "─╯"
 
 def isFlankedByNumber(line: str, idx: int) -> Optional[str]:
   next_char = line[idx + 1] if idx + 1 < len(line) else None
@@ -54,21 +55,45 @@ def parseJtab(jtab: str, tuning: List[str]):
 
     on_set_str_num = True
     cur_str_num = 0
+    chord = None
+    writingChord = False
     for idx, char in enumerate(line):
-      # debug(f"{char} {on_set_str_num} {cur_str_num} {strings}")
-      if char == "$":
+      # debug(f"{char} {writingChord} {on_set_str_num} {cur_str_num} {chord}")
+      if writingChord:
+        if char == ".":
+          continue
+        elif on_set_str_num:
+          cur_str_num = int(char) - 1
+          on_set_str_num = False
+        elif char == " ":
+          # Done writing the chord
+          writeChord(strings, chord)
+          writeColumn(strings, cur_str_num, "─")
+          writingChord = False
+        elif char == "$":
+          on_set_str_num = True
+        else:
+          chord[cur_str_num] += char
+      elif char == "$":
         on_set_str_num = True
       elif on_set_str_num and char == " ":
         continue
       elif on_set_str_num:
-        cur_str_num = int(char)
+        cur_str_num = int(char) - 1
         on_set_str_num = False
+      elif char == ".":
+        writingChord = True
+        chord = [""] * len(tuning)
       elif char == " " and isFlankedByNumber(line, idx):
         writeColumn(strings, cur_str_num, "-") # normal hyphen when between numbers for legibility
       elif char == " ":
         writeColumn(strings, cur_str_num, "─")
       else:
         writeColumn(strings, cur_str_num, char)
+
+    if writingChord:
+      # if we end the line with a chord, we need to manually write it now
+      writeChord(strings, chord)
     endLine(strings)
 
     output.append(pf.CodeBlock("\n".join(strings) + "\n"))
