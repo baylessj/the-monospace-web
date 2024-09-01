@@ -455,3 +455,7 @@ label input {
 .debug-toggle-label {
   text-align: right;
 }
+
+.jtab {
+  line-height: 1.25em;
+}
