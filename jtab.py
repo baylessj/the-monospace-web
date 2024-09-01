@@ -82,6 +82,7 @@ def action(elem, doc):
       match = re.search(r'jtab-(.*)', c)
     if match:
       tuning = match.group(1).split('-')
+      tuning.reverse()
 
       div = pf.Div(classes=["jtab"])
       div.content.extend(parseJtab(elem.text, tuning))
